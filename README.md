@@ -36,6 +36,11 @@ Put localhost:4000 on browser
 
 <img width="1467" alt="Edit3" src="https://user-images.githubusercontent.com/119410444/210888420-398eacc6-2204-49a5-9025-380233e66eb3.png">
 
+## COMPLETE TASK
+
+<img width="1466" alt="Checkoff" src="https://user-images.githubusercontent.com/119410444/210890077-c37bfe46-67d4-4753-a923-f8aa4e2bd515.png">
+
+
 ## DELETE
 
 <img width="1463" alt="Delete1" src="https://user-images.githubusercontent.com/119410444/210888699-678a9d8d-12b1-414c-9325-a7e52f79cd3f.png">
