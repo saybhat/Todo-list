@@ -3,7 +3,7 @@
 
 Note: config/config.exe change the username and password to your own else database with fail during "ecto.create"
 
-####To Run
+###To Run
 
 ```sh
 git clone https://github.com/saybhat/Todo-list.git
