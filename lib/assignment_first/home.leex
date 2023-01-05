@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+
+
+.button:hover {
+  background: #06D85F;
+}
+@import url('https://fonts.googleapis.com/css?family=Great+Vibes');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap");
+
+* {
+  box-sizing: border-box;
+}
+
+
+
+li button {
+  float: right;
+  color: #1F1F1F;
+  margin-left: -1px;
+  font-size: 20px;
+  border-radius: 24px;
+  border: 0px solid transparent;
+  border: 1px solid white;
+  transition: 0.2s all ease-in-out;
+}
+
+li button:hover {
+  background-color: Tomato;
+  color: white;
+  
+}
+#inputtask {
+  min-width: 300px;
+  padding: 10px 15px;
+  border-radius: 10px;
+  border: 0px solid transparent;
+  font-size: 24px;
+  margin-right: 10px;
+  color: #1F1F1F;
+}
+
+#inputtask:focus {
+  outline: none;
+}
+
+#addbutton,
+.clear {
+  color: black;
+  font-weight: 500;
+  font-size: 24px;
+  border-radius: 5px;
+  border: 0px solid transparent;
+  padding: 10px 15px;
+  cursor: pointer;
+  border: 1px solid rgb(255, 255, 255);
+  transition: 0.3s all ease-in-out;
+}
+#addbutton:hover,
+.clear:hover {
+  background-color: #030303;
+  color: white;
+  transform: scale(0.97);
+}
+
+
+body {   
+  background: #39B5E0;
+}
+
+.main {
+  position: relative;
+  margin-top: 16px;
+  width: 100%;
+  height: 40%;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0));
+  box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.1);
+  border: 0px solid white;
+  border-radius: 43px;
+  white-space:wrap;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  margin-left: auto;
+  margin-right: auto;
+  overflow: auto;
+}
+
+.todolist li {
+  width: 400px;
+  overflow-wrap: break-word;
+  margin-left: -200px;
+  margin-right: -150px;
+  color: #F3F3F3 
+  flex-direction: row;
+  border-bottom: 1px solid grey;
+  padding-bottom: 20px;
+}
+.todolist button {
+    margin-top: -26px; 
+     
+  }
+.clear d-none{
+  margin-bottom: 100px;
+}
+
+label[for="my-checkbox"] {
+  text-decoration: none;
+}
+
+.task-checkbox:checked + .task-text {
+  text-decoration: line-through;
+  opacity: 0.3;
+}
+.task-checkbox + .task-text{
+  color:white;
+  text-decoration: none;
+  outline: none;
+}
+
+ *{
+    box-sizing: border-box;
+    font-size: 34px;
+    font-family: 'Great Vibes';
+    color: #0A2647;
+}
+
+.fa-pen:before {
+    content: "\f304";
+    color: cornflowerblue;
+}
+
+.fa-trash:before {
+    content: "\f1f8";
+    color: #DC3535;
+}
+
+</style>
+
+<div class="row m-1 p-4">
+        <div class="col">
+            <div class="p-1 h1 text-primary text-center mx-auto display-inline-block">
+                <i class="fa fa-check bg-primary text-white rounded p-2"></i>
+                <u>My Todo-s</u>
+            </div>
+        </div>
+    </div>
+
+</head>
+<body>
+
+<div class="main" >
+  <h2>  </h2>
+  <br>
+  <form action="add" class="input-field" method="get" >
+    <input id="inputtask"  type="text" placeholder="What To-Do?!" name="data" />
+    <br>
+    <br>
+    <button id="addbutton" color="black" type="submit" formaction="/add" >Submit!!</button>
+  </form>
+  
+  <ul class="todolist" style="list-style-type: none; ">
+  <%= for n <- display do %>
+  <li>
+  <%=if n.priority=="high" do %>
+  <h4 style="color:red;" ><%=n.priority %>-priority</h4>
+  <%end %>
+  <%=if n.priority=="low" do %>
+  <h4 style="color:green;" ><%=n.priority %>-priority</h4>
+  <%end %>
+  <%= if n.status=="complete" do%>
+    <a href="checked" style="text-decoration: none; outline:none;">
+    <label>
+    <input type="checkbox"checked  class="task-checkbox"  id="mycheckbox" name="status" value="incomplete" onclick="location.href='checked?id=<%=n.id%>&status='+this.value">
+    <span class="task-text" style="font-size:20px;"><%= n.task%></span>
+    </label>
+    </a>
+  <% else %>
+    <a href="checked" style="text-decoration: none; outline:none;">
+    <label>
+    <input type="checkbox"  class="task-checkbox" name="status" value="complete" onclick="location.href='checked?id=<%=n.id%>&status='+this.value">
+    <span class="task-text" style="font-size:20px;"><%=n.task%></span>
+    </label>
+    </a>
+  <% end %>
+  <form action="edit3" class="form" method="get" >
+    <input type="hidden" id="data" name="data" value="<%=n.task%>"> 
+    <input type="hidden" id="data" name="priority" value="<%=n.priority%>">
+    <button style="margin-right:-25px;" name="id" type="submit" value=<%=n.id%>><i class='fas fa-pen'></i></button>
+  </form>
+  <form action="delete" class="form" method="get" >
+    <button style="margin-right:-80px;" class="btn" name="delete_data" type="submit" value=<%=n.id%>><i class="fa fa-trash"></i></button>
+  </form>
+  </li>
+  <br>
+  <br>
+  <% end %>  
+  </ul>
+  <%= if length(display)>0 do %>
+  <form action="clear_all" class="input-field" method="get" >
+    <button id="addbutton" type="submit" >All Done!!</button>
+  </form>
+  <%end %>
+  <br>
+  
+</div>
+</body>
+</html>

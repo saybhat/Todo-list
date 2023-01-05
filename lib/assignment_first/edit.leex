@@ -1,0 +1,223 @@
+<%m="checked" %>
+<%h="unchecked" %>
+<%l="unchecked" %>
+<!DOCTYPE html>
+<html>
+<head>
+<script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+
+
+.button:hover {
+  background: #06D85F;
+}
+@import url('https://fonts.googleapis.com/css?family=Great+Vibes');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap");
+
+* {
+  box-sizing: border-box;
+}
+
+
+
+li button {
+  float: right;
+  color: #1F1F1F;
+  margin-left: 10px;
+  font-size: 20px;
+  border-radius: 5px;
+  border: 0px solid transparent;
+  border: 1px solid white;
+  transition: 0.2s all ease-in-out;
+}
+
+li button:hover {
+  background-color: black;
+  color: white;
+
+}
+#inputtask {
+  min-width: 300px;
+  padding: 10px 15px;
+  border-radius: 10px;
+  border: 0px solid transparent;
+  font-size: 24px;
+  margin-right: 10px;
+  color: #1F1F1F;
+}
+#defaultinput {
+  min-width: 300px;
+  padding: 10px 15px;
+  border-radius: 10px;
+  border: 1px solid white;
+  font-size: 24px;
+  margin-right: 10px;
+  background: transparent;
+  color: white;
+}
+#inputtask:focus {
+  outline: none;
+}
+
+#addbutton,
+.clear {
+  color: black;
+  font-weight: 500;
+  font-size: 24px;
+  border-radius: 5px;
+  border: 0px solid transparent;
+  padding: 10px 15px;
+  cursor: pointer;
+  border: 1px solid rgb(255, 255, 255);
+  transition: 0.3s all ease-in-out;
+}
+#addbutton:hover,
+.clear:hover {
+  background-color: #030303;
+  color: white;
+  transform: scale(0.97);
+}
+
+
+body {
+  background: #39B5E0;
+}
+h1{
+  margin-left: 150px;
+  position: absolute;
+  top: -50px;
+  font-family: 'Great Vibes', cursive;
+  font-size: 100px;
+  color: white;
+  background: linear-gradient(to top, black, grey,white);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.main {
+  position: relative;
+  margin-top: 16px;
+  width: 100%;
+  height: 40%;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0));
+  box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.1);
+  border: 0px solid white;
+  border-radius: 43px;
+  white-space:wrap;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  margin-left: auto;
+  margin-right: auto;
+  overflow: auto;
+}
+
+.todolist li {
+  width: 400px;
+  overflow-wrap: break-word;
+  margin-left: -200px;
+  margin-right: -150px;
+  color: #F3F3F3
+  flex-direction: row;
+
+  padding-bottom: 20px;
+}
+.todolist button {
+    margin-top: -26px;
+
+  }
+.clear d-none{
+  margin-bottom: 100px;
+}
+
+label[for="my-checkbox"] {
+  text-decoration: none;
+}
+.task-checkbox:checked + .task-text {
+  text-decoration: line-through;
+  opacity: 0.3;
+}
+.task-checkbox:checked + .task-text {
+  text-decoration: line-through;
+  opacity: 0.3;
+}
+.task-text{
+  color:white;
+}
+input[type="checkbox"] {
+  /* Add some styling for checkboxes */
+}
+
+input[type="checkbox"]:indeterminate {
+  /* Add some styling for indeterminate checkboxes */
+}
+
+
+*{
+    box-sizing: border-box;
+    font-size: 34px;
+    font-family: 'Great Vibes';
+    color: #0A2647;
+}
+
+
+</style>
+
+<div class="row m-1 p-4">
+        <div class="col">
+            <div class="p-1 h1 text-primary text-center mx-auto display-inline-block">
+                <i class="fa fa-check bg-primary text-white rounded p-2"></i>
+                <u>My Todo-s</u>
+            </div>
+        </div>
+    </div>
+</head>
+<body>
+
+
+<div class="main" >
+<br>
+<br>
+
+  <ul class="todolist" style="list-style-type: none; ">
+
+  <form action="/edit">
+
+  <li>
+  <input id="defaultinput" type="text" value="<%=data%>" name="data" >
+  <input  type="hidden" value="<%=id%>" name="id" >
+  </li>
+  <li>
+  <h3> Priority: </h3>
+  <%=if priority=="medium" do %>
+  <input type="checkbox" id="checkbox1" name="priority" value="high" onclick="document.getElementById('checkbox2').indeterminate = true; document.getElementById('checkbox2').checked = false; document.getElementById('checkbox3').indeterminate = true; document.getElementById('checkbox3').checked = false;"> High
+  <input type="checkbox" checked id="checkbox2" name="priority" value="medium" onclick="document.getElementById('checkbox1').indeterminate = true; document.getElementById('checkbox1').checked = false; document.getElementById('checkbox3').indeterminate = true; document.getElementById('checkbox3').checked = false;"> Medium
+  <input type="checkbox" id="checkbox3" name="priority" value="low" onclick="document.getElementById('checkbox1').indeterminate = true; document.getElementById('checkbox1').checked = false; document.getElementById('checkbox2').indeterminate = true; document.getElementById('checkbox2').checked = false;"> Low
+  <%end %>
+  <%=if priority=="high" do%>
+  <input type="checkbox" checked id="checkbox1" name="priority" value="high" onclick="document.getElementById('checkbox2').indeterminate = true; document.getElementById('checkbox2').checked = false; document.getElementById('checkbox3').indeterminate = true; document.getElementById('checkbox3').checked = false;"> High
+  <input type="checkbox"  id="checkbox2" name="priority" value="medium" onclick="document.getElementById('checkbox1').indeterminate = true; document.getElementById('checkbox1').checked = false; document.getElementById('checkbox3').indeterminate = true; document.getElementById('checkbox3').checked = false;"> Medium
+  <input type="checkbox" id="checkbox3" name="priority" value="low" onclick="document.getElementById('checkbox1').indeterminate = true; document.getElementById('checkbox1').checked = false; document.getElementById('checkbox2').indeterminate = true; document.getElementById('checkbox2').checked = false;"> Low
+  <%end %>
+  <%=if priority=="low" do%>
+  <input type="checkbox"  id="checkbox1" name="priority" value="high" onclick="document.getElementById('checkbox2').indeterminate = true; document.getElementById('checkbox2').checked = false; document.getElementById('checkbox3').indeterminate = true; document.getElementById('checkbox3').checked = false;"> High
+  <input type="checkbox"  id="checkbox2" name="priority" value="medium" onclick="document.getElementById('checkbox1').indeterminate = true; document.getElementById('checkbox1').checked = false; document.getElementById('checkbox3').indeterminate = true; document.getElementById('checkbox3').checked = false;"> Medium
+  <input type="checkbox" checked id="checkbox3" name="priority" value="low" onclick="document.getElementById('checkbox1').indeterminate = true; document.getElementById('checkbox1').checked = false; document.getElementById('checkbox2').indeterminate = true; document.getElementById('checkbox2').checked = false;"> Low
+  <%end %>
+  </li>
+
+  <br>
+  <br>
+
+ <input type="submit" value="Done-n-Save">
+ </form>
+  </ul>
+  <br>
+</div>
+</body>
+</html>
+
+
